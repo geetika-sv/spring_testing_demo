@@ -51,4 +51,10 @@ public class EmployeeController {
     public boolean deleteOneById(@PathVariable Long id) {
         return service.deleteEmployeeById(id);
     }
+
+    @PostMapping("/seed")
+    public Iterable<Employee> seedEmployees() {
+       return service.seedEmployees();
+
+    }
 }
