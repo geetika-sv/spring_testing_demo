@@ -15,8 +15,9 @@ import java.util.Arrays;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 @WebMvcTest(EmployeeController.class)
 public class EmployeeControllerTests {
 
@@ -34,7 +35,7 @@ public class EmployeeControllerTests {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/employees"))
                 .andExpect(status().isOk())
-                .andExpect((ResultMatcher) jsonPath("$", hasSize(3)));
+                .andExpect(jsonPath("$", hasSize(3)));
     }
 
 
